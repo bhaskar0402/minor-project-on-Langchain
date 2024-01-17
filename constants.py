@@ -1,1 +1,2 @@
-openai_key=''
+openai_key='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'
+openhf_key='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'
