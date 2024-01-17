@@ -7,7 +7,7 @@ from constants import openai_key
 from langchain import PromptTemplate
 from langchain.chains import LLMChain , SequentialChain , SimpleSequentialChain
 #from langchain import PromptTemplate
-from langchain.memory import ConversationBufferMemory
+#from langchain.memory import ConversationBufferMemory
 
 import streamlit as st
 
@@ -21,9 +21,6 @@ first_input_prompt=PromptTemplate(
     template="tell me about celebrity {name}"
 )
 
-person_memory = ConversationBufferMemory(input_key='name', memory_key='chat_history')
-dob_memory = ConversationBufferMemory(input_key='person', memory_key='chat_history')
-descr_memory = ConversationBufferMemory(input_key='dob', memory_key='description_history')
 
 llm=OpenAI(temperature=0.8)
 chain=LLMChain(
@@ -32,7 +29,7 @@ chain=LLMChain(
 
 second_input_prompt=PromptTemplate(
     input_variables=['person'],
-    template="when was {person} born ? "
+    template="when was {person} born "
 )
 
 chain2=LLMChain(
